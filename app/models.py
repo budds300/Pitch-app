@@ -128,6 +128,40 @@ class Upvote(db.Model):
         db.session.commit()
         
     @classmethod
-    def get_votes
-     
+    def add_upvotes(cls,id):
+        upvote = Upvote.query.filter_by(pitch_id = id).all()
+        
+    
+    def __repr__(self):
+       return f'{self.user_id}:{self.pitch_id}' 
+   
+class Downvote(db.Model):
+    '''
+    Function stores user votes
+    '''
+    
+    __tabelname__= 'downvote'
+    
+    id= db.Column(db.Integer, primary_key = True)
+    downvote =  db.Column(db.Integer, default = 1)
+    user_id = db.Column(db.Integer,db.ForeignKey('users_id'))
+    pitch_id = db.Column(db.Integer,dbForeignKey('pitch_id'))
          
+         
+    def add_Downvote(cls,id):
+        downvote_pitch = Downvote(user = current_user)
+        downvote_pitch.save_downvotes()
+        
+        
+    def save_downvotes(self):
+        db.session.add(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_votes(cls,id):
+        downvote = Downvote.query.filter_by(pitch_id=id).all()
+    
+        
+    def __repr__(self):
+        return f'{self.id_user},{self.pitch_id}'
+        
