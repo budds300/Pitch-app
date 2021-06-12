@@ -23,9 +23,21 @@ class User(UserMixin,db.Model):
     downvotes = db.relationship('Downvote',backref = 'users',lazy = 'dynamic')
     upvotes = db.relationship('Upvote',backref = 'users',lazy = 'dynamic')
     
-
-
+    @property
+    def password(self):
+        raise AttributeError('You cannot read the password attribute')
     
+    @password.setter
+    def password(self,password):
+        self.password_secure= generate_password_hash(password)
+        
+    def verify_password(self,password):
+        return check_password_hash(self.password_secure,password)
     
     def __repr__(self):
         return f'User {self.username}'
+
+
+    
+    
+    
