@@ -5,11 +5,26 @@ from flask_login import UserMixin,current_user
 from datetime import datetime
 from . import login_manager
 
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 class User(UserMixin,db.Model):
     __tablename__='users'
-    id=db.Column(db.Integer,primary_key=True)
-    username=db.Column(db.String(225))
     
+    id = db.Column(db.Integer,primary_key=True)
+    username = db.Column(db.String(225))
+    password_secure = db.Column(db.String(225))
+    email = db.Column(db.String(255),unique = True, index = True, nullable = False)
+    bio = db.Column(db.String(255))
+    profile_pic_path = db.Column(db.String())
+    pitch = db.relationship('Pitch',backref = 'users',lazy = 'dynamic')
+    downvotes = db.relationship('Downvote',backref = 'users',lazy = 'dynamic')
+    upvotes = db.relationship('Upvote',backref = 'users',lazy = 'dynamic')
+    
+
+
     
     
     def __repr__(self):
