@@ -89,3 +89,45 @@ class Pitch():
         Function retrieves queriesthe data returns based on cartegory
         '''
         return Pitch.query.filter_by(category_id = category_id)
+
+class Comments(db.Model):
+    
+     __tablename__= 'comments'
+     
+     
+     id = db.Column(db.String, primary_key = True)
+     comment = db.Column(db.String)
+     image_path =  db.Column(db.String)
+     pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+     posted = db.Column(db.DateTime,default=datetime.utcnow)
+     username = db.Column(db.String)
+        
+     def save_comment(self):
+         '''
+         saveing the comments
+         '''
+         db.session.add(self)
+         db.session.commit()
+         
+     @classmethod
+     def get_comments(cls,id):
+         comments = Comments.query.filter_by(pitch_id = id).all()
+         return comments
+     
+class Upvote(db.Model):
+    __tablename__ ='upvotes'
+    
+    id = db.Column(db.Integer,primary_key = True)
+    upvote = db.Column(db.Integer, default = 1)
+    pitch_id = db.Column(db.Integer , db.ForgeinKey('pitch.id'))
+    user_id = db.Column(db.Integer , db.ForgeinKey('users.id'))
+     
+    @classmethod
+    def save_upvote (self):
+        db.session.add(self)
+        db.session.commit()
+        
+    @classmethod
+    def get_votes
+     
+         
