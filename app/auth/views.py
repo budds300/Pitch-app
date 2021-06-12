@@ -19,8 +19,8 @@ def login():
         title = 'Pitch Login'
         return render_template('auth/login.html',login_form = login_form, title=title)
     
-    def logout()
-    logout_user()
+    def logout():
+     logout_user()
     return redirect(url_for('main.index'))
 
 @auth.route('/register',methods = ['GET', 'POST'])
