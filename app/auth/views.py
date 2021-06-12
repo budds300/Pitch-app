@@ -26,3 +26,13 @@ def login():
 @auth.route('/register',methods = ['GET', 'POST'])
 def register():
     form = Registration()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data, username = form.username.data, password = form.password).first()
+        db.session.add(user)
+        db.session.commit()
+        
+        mail_message('Welcome to Pitch App','email/welcome_user',user.email, user= user)
+        
+        return redirect(url_for('auth.login'))
+    title = 'Register Now'
+    return render_template('auth/register.html',title = title, registration_form= form)
