@@ -4,6 +4,7 @@ from . import main
 from .forms import UpdateProfile, AddPitch, CommentForm
 from ..models import User, Pitch, Comment
 from .. import db, photos
+import markdown2
 
 
 # Views

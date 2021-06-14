@@ -3,10 +3,10 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {%block content%}
-<div class="container">
-    <div class="card">
+<div class="container"style="font-size:medium; padding-top:15em">
+    <div class="card" >
         <div class="card-body">
-            <h3 class="card-title">{{pitch.title}}</h3>
+            <h1 class="card-title">{{pitch.title}}</h1>
             <p class="card-text">{{pitch.description}}</p>
             <hr>
             <p class="card-text">Posted on {{date}} by {{pitch.user.username| capitalize}}</p>

@@ -16,7 +16,7 @@
                     <h1 class="card-title">{{user.firstname}} {{user.lastname}}</h1>
                     <h3 class="card-title"> {{user.username| capitalize}} </h3>
                     {% if user.bio %}
-                    <p class="card-text"> {{user.bio}}</p>
+                    <p class="card-text "> {{user.bio}}</p>
                     {%else%}
                     <p class="card-text"> {{user.username| capitalize}} has no bio.</p>
                     {% endif %}
@@ -33,7 +33,7 @@
         <div class="col-md-8 my-sm-3">
             <h2 class="text-center">My Pitches</h2>
             <hr>
-            <div class="row">
+            <div class="row"style="font-size:medium">
                 {{macro.displayPitches(pitches)}}
             </div>
         </div>

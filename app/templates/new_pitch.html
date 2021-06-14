@@ -3,12 +3,14 @@
 
 {% block content %}
 <div class="container">
-    <div class="col-md-12">
+    <h1 class="text-white text-center pt-5">Add A New Pitch</h1>
+    <div class="col-md-12" style="font-size:medium; padding-top:13em">
         <div class="card">
             <div class="card-body">
                 <h3 class="card-title">Create a pitch</h3>
                 <hr>
                 {{ wtf.quick_form(pitch_form) }}
+                {{simplemde.load}}
             </div>
         </div>
     </div>
