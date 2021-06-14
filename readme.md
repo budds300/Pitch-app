@@ -1,7 +1,7 @@
 # Pitch App
 This is an [application](https://github.com/budds300/Pitch-app) where people share pitches to build one another that touches on different sectors of life such as product marketing,interviews,promotions and pick up lines.
-![interviewpitches]()
-![productpitches]()
+![homepitches](screenshot1.png)
+![profile](screenshot2.png)
 ## Features
 * The app has a navigation bar that makes navigation to different areas easier
 * The app has a login  and sign in sections
