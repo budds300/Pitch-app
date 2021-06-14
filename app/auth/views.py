@@ -1,38 +1,45 @@
-from flask import render_template,redirect,url_for,flash,request
 from . import auth
-from flask_login import login_user,logout_user,login_required
+from flask import render_template, redirect, url_for, flash
+from flask_login import login_user, logout_user, login_required
 from ..models import User
-from .forms import LoginForm, RegistrationForm
+from .forms import RegistrationForm, LoginForm
 from .. import db
 from ..email import mail_message
 
-@auth.route('/login',methods=['GET', 'POST'])
+@auth.route('/login', methods=['GET', 'POST'])
 def login():
-    login_form= LoginForm()
+    """
+    Function that renders the login html page.
+    """
+    login_form = LoginForm()
     if login_form.validate_on_submit():
         user = User.query.filter_by(email = login_form.email.data).first()
         if user is not None and user.verify_password(login_form.password.data):
-            login_user(user,login_form.remember.data)
-            return redirect(request.args.get('next') or url_for('main.index'))
-        
-        flash('Invalid username or Password')
-        title = 'Pitch Login'
-        return render_template('auth/login.html',login_form = login_form, title=title)
-    
-    def logout():
-     logout_user()
-    return redirect(url_for('main.index'))
+            login_user(user, login_form.remember.data)
+            return redirect(url_for('main.index'))
+        flash('Invalid username or password')
+    title = 'Login to pitch app'
+    return render_template('auth/login.html', login_form = login_form, title = title)
 
-@auth.route('/register',methods = ['GET', 'POST'])
+@auth.route('/register',methods = ["GET","POST"])
 def register():
-    form = Registration()
+    """
+    Function that renders the registration html page.
+    """
+    form = RegistrationForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email = form.email.data, username = form.username.data, password = form.password).first()
+        user = User(email = form.email.data, firstname = form.firstname.data, lastname = form.lastname.data, username = form.username.data, password = form.password.data)
         db.session.add(user)
         db.session.commit()
-        
-        mail_message('Welcome to Pitch App','email/welcome_user',user.email, user= user)
+
+        mail_message("Welcome to pitch app","email/welcome_user",user.email,user=user)
+        title = "New Account"
         
         return redirect(url_for('auth.login'))
-    title = 'Register Now'
-    return render_template('auth/register.html',title = title, registration_form= form)
+    return render_template('auth/register.html',registration_form = form)
+
+@auth.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))

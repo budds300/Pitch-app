@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/moringa/Documents/morings_pre-prep_projects/pitch app/virtual/bin/python" "$0" "$@"
+'''exec' "/home/moringa/Documents/morings_pre-prep_projects/pitch app/newPitchApp/virtual/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
