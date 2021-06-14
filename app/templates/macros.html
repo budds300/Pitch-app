@@ -1,13 +1,13 @@
 {% macro displayPitches(pitches)%}
 {%for pitch in pitches%}
-<div class="col-md-6 col-sm-6 mb-3 d-flex">
+<div class="col-md-4 col-sm-6 mb-3 d-flex">
     <div class="card flex-fill">
         <div class="card-body">
             {{categoryBadge(pitch.category)}}
             <h4 class="card-title">{{pitch.title}}</h4>
             <p class="card-text">{{pitch.description}}</p>
             </p>
-            <a href="/pitch/{{pitch.id}}" class="btn btn-outline-info">View Pitch</a>
+            <a href="/pitch/{{pitch.id}}" class="btn btn-outline-primary">View Pitch</a>
         </div>
     </div>
 </div>
@@ -37,15 +37,15 @@
 <span class="
         badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'product'%}
-<span class="badge badge-pill badge-danger p-2 mb-2" style="font-size: 1em">{{category}}</span>
+<span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'boring'%}
-<span class="badge badge-pill badge-success p-2 mb-2" style="font-size: 1em">{{category}}</span>
+<span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'random'%}
-<span class="badge badge-pill badge-primary p-2 mb-2" style="font-size: 1em">{{category}}</span>
+<span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'science'%}
-<span class="badge badge-pill badge-warning p-2 mb-2" style="font-size: 1em">{{category}}</span>
+<span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'sports'%}
-<span class="badge badge-pill badge-dark p-2 mb-2" style="font-size: 1em">{{category}}</span>
+<span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% elif category == 'technology'%}
 <span class="badge badge-pill badge-info p-2 mb-2" style="font-size: 1em">{{category}}</span>
 {% endif %} {% endmacro %}
