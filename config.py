@@ -6,18 +6,18 @@ class Config:
     General configuration parent class
     '''
     # simple mde  configurations
-    SIMPLEMDE_JS_IIFE = True
-    SIMPLEMDE_USE_CDN = True
+    SIMPLEMDE_JS_IIFE=True
+    SIMPLEMDE_USE_CDN=True
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:hello@localhost/newpitch'
-    UPLOADED_PHOTOS_DEST = 'app/static/photos'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/newpitch'
+    UPLOADED_PHOTOS_DEST='app/static/photos'
 
     # email configurations
-    MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 587
-    MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_SERVER='smtp.googlemail.com'
+    MAIL_PORT=587
+    MAIL_USE_TLS=True
+    MAIL_USERNAME=os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD=os.environ.get('MAIL_PASSWORD')
 
 class TestConfig(Config):
     '''
@@ -26,7 +26,7 @@ class TestConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://postgres:hello@localhost/newpitch_test'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/newpitch_test'
     pass
 
 class ProdConfig(Config):
@@ -45,7 +45,7 @@ class ProdConfig(Config):
     # if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
     #     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://",1)
         
-    pass
+    
 class DevConfig(Config):
     '''
     Development  configuration child class
@@ -53,8 +53,8 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    ENV = 'development'
-    DEBUG = True
+    ENV='development'
+    DEBUG=True
 
 config_options = {
 'development':DevConfig,
