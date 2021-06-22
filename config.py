@@ -9,7 +9,7 @@ class Config:
     SIMPLEMDE_JS_IIFE=True
     SIMPLEMDE_USE_CDN=True
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/pitch'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/pitchh'
     UPLOADED_PHOTOS_DEST='app/static/photos'
 
     # email configurations

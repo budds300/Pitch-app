@@ -9,12 +9,21 @@
             <div class="card-body">
                 <h3 class="card-title">Create a pitch</h3>
                 <hr>
-                {{ wtf.quick_form(pitch_form) }}
-                {{simplemde.load}}
+                <div class="display-5">
+                    <form class="form-group" method="post" enctype="multipart/form-data"></form>
+                        <!-- {{ wtf.quick_form(pitch_form) }} -->
+                        {{form.hidden_tag()}}
+                        {{form.title.label}}
+                        {{form.title(class = "form-control",style="margin-bottom: 10px;")}}
+                        {{form.description.label}}
+                        {{form.description(class = "form-control", style="margin-bottom: 15px;")}}
+                        {{form.category(class = "form-control", style="margin-bottom: 15px;")}}
+                        {{form.submit(class = "btn btn-sm btn-info")}}
+                        {{simplemde.load}}
+                </div>
             </div>
         </div>
     </div>
-
 </div>
 
 {% endblock %}

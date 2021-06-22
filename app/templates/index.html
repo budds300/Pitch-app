@@ -2,7 +2,6 @@
 {% import 'macros.html' as macro %}
 
 {% block content %}
-<div class="container">
     <h1 class="text-center pt-3">Welcome to Pitch App</h1>
     {% if current_user.is_authenticated %}
     <a href="/pitch/new" class="btn btn-success my-3" style="font-size:small" >New Pitch</a>
