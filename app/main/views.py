@@ -79,7 +79,7 @@ def add_pitch():
         return redirect(url_for('.index'))
 
     title = 'New pitch'
-    return render_template('new_pitch.html',title = title, form=form )
+    return render_template('new_pitch.html',title = title,pitch_form=form )
 
 @main.route('/pitches/<category>')
 def get_pitches_category(category):
