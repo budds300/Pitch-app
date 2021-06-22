@@ -9,7 +9,7 @@ class Config:
     SIMPLEMDE_JS_IIFE=True
     SIMPLEMDE_USE_CDN=True
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/newpitch'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/pitch'
     UPLOADED_PHOTOS_DEST='app/static/photos'
 
     # email configurations
@@ -26,7 +26,7 @@ class TestConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/newpitch_test'
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://postgres:hello@localhost/test'
     pass
 
 class ProdConfig(Config):
@@ -42,10 +42,10 @@ class ProdConfig(Config):
     
     
 
-    # if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
-    #     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://",1)
+    if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://",1)
         
-    # pass
+
 class DevConfig(Config):
     '''
     Development  configuration child class
