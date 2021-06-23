@@ -4,7 +4,6 @@ from . import main
 from .forms import UpdateProfile, AddPitch, CommentForm
 from ..models import User, Pitch, Comment
 from .. import db, photos
-import markdown2
 
 
 # Views
@@ -121,4 +120,3 @@ def pitch(id):
     comments = Pitch.get_comments(pitch)
 
     return render_template("pitch.html", pitch = pitch, comment_form = comment_form, comments = comments, date = posted_date)
-
