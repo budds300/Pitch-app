@@ -1,13 +1,15 @@
 {% macro displayPitches(pitches)%}
 {%for pitch in pitches%}
-<div class="col-md-12 col-sm-6 mb-3 d-flex">
-    <div class="card flex-fill">
-        <div class="card-body"style="font-size:large">
-            {{categoryBadge(pitch.category)}}
-            <h2 class="card-title">{{pitch.title}}</h2>
-            <p class="card-text">{{pitch.description}}</p>
-            </p>
-            <a href="/pitch/{{pitch.id}}" class="btn btn-outline-danger"style="font-size:small">View Pitch</a>
+<div class="container">
+    <div class="col-md-12 col-sm-6 mb-3 d-flex">
+        <div class="card flex-fill">
+            <div class="card-body"style="font-size:large">
+                {{categoryBadge(pitch.category)}}
+                <h2 class="card-title">{{pitch.title}}</h2>
+                <p class="card-text">{{pitch.description}}</p>
+                </p>
+                <a href="/pitch/{{pitch.id}}" class="btn btn-outline-danger"style="font-size:small">View Pitch</a>
+            </div>
         </div>
     </div>
 </div>
